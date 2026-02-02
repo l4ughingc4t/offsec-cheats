@@ -70,6 +70,8 @@ newgrp docker
 ```
 ## 🔴pwntools
 ```
+sudo apt install pwntools
+or
 sudo apt update
 sudo apt install -y python3-pip python3-dev libssl-dev libffi-dev build-essential
 pip3 install --upgrade pip
