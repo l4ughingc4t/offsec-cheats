@@ -93,6 +93,9 @@ rpcclient> enumdomgroups
 gobuster dir -u http://<IP> -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,txt
 gobuster dns -d domain.htb -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
 
+/usr/share/wordlists/dirb/common.txt 
+
+
 # Feroxbuster
 feroxbuster -u http://<IP> -w /usr/share/wordlists/dirb/common.txt
 
