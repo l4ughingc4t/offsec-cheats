@@ -149,3 +149,18 @@ nc -lvnp 5555
 ```bash
 rm /tmp/linpeas.sh
 ```
+
+```
+フローチャート
+linpeas の赤い出力を見る
+        ↓
+sudo に NOPASSWD がある → GTFOBins を確認 → 載っていれば使える
+        ↓ なければ
+Cron に root 実行のスクリプトがある → 書き込めるか確認 → 書き込めれば使える
+        ↓ なければ
+SUID に珍しいバイナリがある → GTFOBins を確認 → 載っていれば使える
+        ↓ なければ
+cap_setuid がある → 即使える
+        ↓ なければ
+/etc/passwd や /etc/sudoers に書き込める → 即使える
+```
