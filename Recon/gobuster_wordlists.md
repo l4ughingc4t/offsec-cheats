@@ -100,6 +100,13 @@ gobuster dns -d TARGET.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1m
 
 # vhost 列挙
 gobuster vhost -u http://TARGET -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain
+
+# デフォルトページのサイズを確認
+curl -s http://TARGET | wc -c
+
+# 除外
+-exclude-length 8753
+
 ```
 
 ---
